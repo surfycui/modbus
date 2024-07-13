@@ -338,7 +338,7 @@ func (ms *ModbusServer) handleTCPClient(sock net.Conn) {
 	case modbusTCP:
 		// serve modbus requests over the raw TCP connection
 		ms.handleTransport(
-			newTCPTransport(sock, ms.conf.Timeout, ms.conf.Logger),
+			newTCPTransport(sock, ms.conf.Timeout, false, ms.conf.Logger),
 			sock.RemoteAddr().String(), "")
 
 	case modbusTCPOverTLS:
@@ -350,7 +350,7 @@ func (ms *ModbusServer) handleTCPClient(sock net.Conn) {
 		} else {
 			// serve modbus requests over the TLS tunnel
 			ms.handleTransport(
-				newTCPTransport(tlsSock, ms.conf.Timeout, ms.conf.Logger),
+				newTCPTransport(tlsSock, ms.conf.Timeout, false, ms.conf.Logger),
 				sock.RemoteAddr().String(), clientRole)
 		}
 

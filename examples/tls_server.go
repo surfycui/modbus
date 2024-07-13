@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/simonvetter/modbus"
+	"github.com/surfycui/modbus"
 )
 
 /* Modbus TCP+TLS (MBAPS or Modbus Security) server example.
